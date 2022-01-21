@@ -1,8 +1,8 @@
 
 
 // add running clock? interval func req
-var currentDayEl = moment().format('dddd - MMMM - Do - YYYY')
-$('#currentDay').text(currentDayEl)
+var currentDate = moment().format('dddd - MMMM - Do - YYYY')
+$('#currentDay').text(currentDate)
 
 // timeblocks to show businness hours
 // DONE
@@ -17,26 +17,26 @@ console.log(moment().hours())
 // timeblocks to be colour coded for past, present and future
 // DONE
 // debugger
-function timeChecker(hour, timeblockEl) {
+function timeChecker(hour, timeBlock) {
     var currentHour = moment().hours()
     if (currentHour === hour) {
-        timeblockEl.addClass('present')
+        timeBlock.addClass('present')
         console.log('Present!')
     } else if (currentHour > hour) {
         console.log('Past!')
-        timeblockEl.addClass('past')
-        timeblockEl.removeClass('present')
+        timeBlock.addClass('past')
+        timeBlock.removeClass('present')
     } else {
         console.log('Future!')
-        timeblockEl.addClass('future')
+        timeBlock.addClass('future')
     }
 }
 
 function timeLoop() {
     for(var i = 9; i <= 18; i++) {
         var timeblockSelector = `#hour-${i}`
-        var timeblockEl = $(timeblockSelector)
-        timeChecker(i, timeblockEl)
+        var timeBlock = $(timeblockSelector)
+        timeChecker(i, timeBlock)
     }
 }
 
@@ -47,21 +47,41 @@ timeLoop()
 
 
 
-var backGround = document.getElementById('textarea')
+// var backGround = document.getElementById('textarea')
 
 
-
-
-
-
-
-// when timeblock is clicked an event can be added
-
-function addEvent () {}
 
 // when text added it is saved by button into local storage
 
-function saveEvent () {}
+$('.saveBtn').on('click', function() {
+    var current = $(this)
+    var eventText = current.siblings('.description').val()
+    var eventTime = current.siblings('.hour').text()
+
+    localStorage.setItem(eventTime, eventText)
+
+}
+)
+
+
+// get event data NOT WORKING WHY??
+
+function readEvent() {
+$('.hour').each(function() {
+    var current = $(this)
+    var savedTime = current.text()
+    var savedInput = localStorage.getItem(savedTime)
+
+    if (savedInput !== null) {
+        current.siblings('description').val(savedInput)
+        return
+    }
+}
+)
+}
+
+
+
 
 // when page is refreshed the events persist (reset daily?)
 
