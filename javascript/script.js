@@ -1,8 +1,9 @@
-// variable to call display the current date at the top of the page using moment
-var currentDate = moment().format('dddd - MMMM - Do - YYYY')
-$('#currentDay').text(currentDate)
+// setInterval with a jquery on an ID to call and display the current date with a running clock at the top of the page using moment
+setInterval(function () {
+    $('#currentDay').text(moment().format('dddd - MMMM - Do - YYYY - H:mm:ss'))
+}, 1000);
 
-// time set as a global variable using the format I want to read
+// time set as a global variable using the format I want to read for the functions below
 var time = moment().format('HH:mm') 
 
 // console logging to make sure moment was being called correctly
@@ -40,31 +41,26 @@ function timeLoop() {
 timeLoop()
 
 // jquery interaction with the saveBtn
+// using 'this' to grab the sibling elements around the targeted button ID that started the event to set each sibling to a variable and saving them to local storage
 $('.saveBtn').on('click', function() {
-    var current = $(this)
-    var eventText = current.siblings('.description').val()
-    // var eventText = current.siblings('.description').text()
-    var eventTime = current.siblings('.hour').text()
-
+    var eventText = $(this).siblings('.description').val()
+    var eventTime = $(this).siblings('.hour').text()
     localStorage.setItem(eventTime, eventText)
-
-}
+    } 
 )
 
-// get event data IT WORKS!
+// the function used to write the value saved in local storage onto the page
+// the '.hour' class is targeted using jquery and passes through each of elements with the matching class using 'each'
+// a variable of currentTime is set targeting the text of the '.hour' class using 'this'
+// savedTime then 'gets' from local storage a key that matches the text read from currentTime
+// siblings are then targetted and the '.description' value that matches the key is then written to the page
 function readEvent() {
 $('.hour').each(function() {
-    var current = $(this)
-    var savedTime = current.text()
-    var savedInput = localStorage.getItem(savedTime)
-    // console.log(savedTime)
-
-    if (savedInput !== null) {
-        current.siblings('.description').val(savedInput)
-        return
-    }
-}
-)
+var currentTime = $(this).text()
+var savedTime = localStorage.getItem(currentTime)
+$(this).siblings('.description').val(savedTime)
+        }
+    )
 }
 
 // calling of readEvent function to display saved values from local storage
