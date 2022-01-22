@@ -56,6 +56,7 @@ timeLoop()
 $('.saveBtn').on('click', function() {
     var current = $(this)
     var eventText = current.siblings('.description').val()
+    // var eventText = current.siblings('.description').text()
     var eventTime = current.siblings('.hour').text()
 
     localStorage.setItem(eventTime, eventText)
@@ -64,16 +65,17 @@ $('.saveBtn').on('click', function() {
 )
 
 
-// get event data NOT WORKING WHY??
+// get event data IT WORKS!
 
 function readEvent() {
 $('.hour').each(function() {
     var current = $(this)
     var savedTime = current.text()
     var savedInput = localStorage.getItem(savedTime)
+    // console.log(savedTime)
 
     if (savedInput !== null) {
-        current.siblings('description').val(savedInput)
+        current.siblings('.description').val(savedInput)
         return
     }
 }
@@ -81,6 +83,8 @@ $('.hour').each(function() {
 }
 
 
+
+readEvent()
 
 
 // when page is refreshed the events persist (reset daily?)
