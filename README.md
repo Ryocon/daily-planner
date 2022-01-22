@@ -26,6 +26,6 @@ The page is styled using both Bootstrap classes and local CSS in combination.
 
 <br>
 
-Github deployed application: [daily-planner]()
+Github deployed application: [daily-planner](https://ryocon.github.io/daily-planner/)
 
 Github repository: [Ryocon/daily-planner](https://github.com/Ryocon/daily-planner)
