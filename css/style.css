@@ -76,6 +76,7 @@ textarea {
   color: #000000;
 }
 
+/* styling for the date to show at the top of the page */
 #currentDay {
   color: coral;
 }

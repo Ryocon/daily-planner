@@ -29,6 +29,7 @@
     ></script>
     <link rel="stylesheet" href="css/style.css" />
     <title>Work Day Scheduler</title>
+    <!-- all relevant scripts for the project including bootstrap, moment and jquery are linked above -->
   </head>
 
   <body>
@@ -39,6 +40,9 @@
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
+      <!-- timeblocks are set for the individual hour -->
+      <!-- each have styling from bootstrap aswell as the local css -->
+      <!-- individual id's are set in order to for the javascript to execute it's functionality correctly -->
       <div id="hour-9" class="row time-block">
         <div class="hour col-1">09:00</div>
         <textarea class="description col-10"></textarea>
@@ -100,7 +104,7 @@
       </div>
     </div>
 
-
+<!-- scripts for linking the local javascript, jquery and moment -->
     <script src="javascript/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

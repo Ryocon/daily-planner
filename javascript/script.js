@@ -1,37 +1,33 @@
-
-
-// add running clock? interval func req
+// variable to call display the current date at the top of the page using moment
 var currentDate = moment().format('dddd - MMMM - Do - YYYY')
 $('#currentDay').text(currentDate)
 
-// timeblocks to show businness hours
-// DONE
+// time set as a global variable using the format I want to read
+var time = moment().format('HH:mm') 
 
-var time = moment().format('HH:mm')
+// console logging to make sure moment was being called correctly
+console.log('The current time is ' + time)
+console.log('The current hour is ' + moment().hours())
 
-// time.isBetween(moment('09:00')), moment('09:59') 
-
-console.log(time)
-console.log(moment().hours())
-
-// timeblocks to be colour coded for past, present and future
-// DONE
+// a conditional statement used to check if the hour is correct to display present, past and future stylings to each individual timeblock
 // debugger
 function timeChecker(hour, timeBlock) {
     var currentHour = moment().hours()
     if (currentHour === hour) {
         timeBlock.addClass('present')
-        console.log('Present!')
+        console.log('You are in the Present!')
     } else if (currentHour > hour) {
-        console.log('Past!')
+        console.log(' <- Elements in the Past!')
         timeBlock.addClass('past')
         timeBlock.removeClass('present')
     } else {
-        console.log('Future!')
+        console.log('<- Elements in the Future!')
         timeBlock.addClass('future')
     }
 }
 
+// a loop used to cycle through each timeblock and add an integer to the id of #hour- in order to update the styling based on the current time
+// string inerpolation is used for this addition to the #hour- id
 function timeLoop() {
     for(var i = 9; i <= 18; i++) {
         var timeblockSelector = `#hour-${i}`
@@ -40,19 +36,10 @@ function timeLoop() {
     }
 }
 
-// backticks for string inertperlotation (spelling)
-
+// calling of the timeLoop function
 timeLoop()
 
-
-
-
-// var backGround = document.getElementById('textarea')
-
-
-
-// when text added it is saved by button into local storage
-
+// jquery interaction with the saveBtn
 $('.saveBtn').on('click', function() {
     var current = $(this)
     var eventText = current.siblings('.description').val()
@@ -64,9 +51,7 @@ $('.saveBtn').on('click', function() {
 }
 )
 
-
 // get event data IT WORKS!
-
 function readEvent() {
 $('.hour').each(function() {
     var current = $(this)
@@ -82,10 +67,8 @@ $('.hour').each(function() {
 )
 }
 
-
-
+// calling of readEvent function to display saved values from local storage
 readEvent()
-
 
 // when page is refreshed the events persist (reset daily?)
 
