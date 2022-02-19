@@ -6,6 +6,9 @@ This project is a work day scheduler that uses multiple API's such as Bootstrap,
 
 The page is styled using both Bootstrap classes and local CSS in combination.
 
+## Technologies
+HTML, CSS, Javascript, jQuery, MomentJS and Bootstrap were used to create this project. The design is responsive through the use of Bootstrap.
+
 ---
 
 
@@ -17,7 +20,7 @@ The page is styled using both Bootstrap classes and local CSS in combination.
 
 <br>
 
-![local storage example](screenshots/local-storage-example.png)
+![local storage example](screenshots/local-storage-example.PNG)
 
 
 ---
@@ -26,6 +29,6 @@ The page is styled using both Bootstrap classes and local CSS in combination.
 
 <br>
 
-Github deployed application: [daily-planner](https://ryocon.github.io/daily-planner/)
+Github deployed application - [daily-planner](https://ryocon.github.io/daily-planner/)
 
-Github repository: [Ryocon/daily-planner](https://github.com/Ryocon/daily-planner)
+Github repository - [Ryocon/daily-planner](https://github.com/Ryocon/daily-planner)
